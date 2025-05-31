@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LMB Jaipur - Royal Flavours Since 1727 | Heritage Sweet Shop & Restaurant</title>
+    <meta name="description" content="Experience the royal heritage of Jaipur at LMB - serving authentic Rajasthani sweets, thali, and hospitality since 1727. Order online or visit our heritage restaurant.">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="https://via.placeholder.com/80x60/C9A35C/FFFFFF?text=LMB" alt="LMB Logo">
+                <span>LMB Jaipur</span>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#legacy" class="nav-link">Our Legacy</a></li>
+                <li><a href="#sweets" class="nav-link">Sweets</a></li>
+                <li><a href="#thali" class="nav-link">Thali & Menu</a></li>
+                <li><a href="#gifting" class="nav-link">Gifting</a></li>
+                <li><a href="#hotel" class="nav-link">Stay With Us</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="cart-btn"><i class="fas fa-shopping-cart"></i> <span class="cart-count">0</span></button>
+                <button class="nav-toggle" id="nav-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-background">
+            <div class="hero-overlay"></div>
+            <img src="https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=1920&h=1080&fit=crop" alt="LMB Heritage" class="hero-image">
+        </div>
+        <div class="hero-content">
+            <h1 class="hero-title" data-aos="fade-up" data-aos-delay="300">
+                Experience Royal Flavours Since 1727
+            </h1>
+            <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="500">
+                The heritage of Jaipur served on a plate
+            </p>
+            <div class="hero-buttons" data-aos="fade-up" data-aos-delay="700">
+                <button class="btn btn-primary" onclick="scrollToSection('sweets')">
+                    <i class="fas fa-candy-cane"></i> Explore Our Sweets
+                </button>
+                <button class="btn btn-secondary" onclick="scrollToSection('contact')">
+                    <i class="fas fa-utensils"></i> Book Your Table
+                </button>
+            </div>
+        </div>
+        <div class="scroll-indicator" data-aos="fade-in" data-aos-delay="1000">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- Legacy Section -->
+    <section class="legacy" id="legacy">
+        <div class="container">
+            <div class="legacy-content">
+                <div class="legacy-image" data-aos="fade-right">
+                    <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&h=800&fit=crop" alt="LMB Heritage 1727">
+                    <div class="vintage-frame"></div>
+                </div>
+                <div class="legacy-text" data-aos="fade-left">
+                    <h2 class="section-title">Our Royal Legacy</h2>
+                    <p class="legacy-intro">
+                        For nearly three centuries, LMB has been the crown jewel of Jaipur's culinary heritage, 
+                        serving royalty and commoners alike with the same dedication to authentic flavours.
+                    </p>
+                    
+                    <div class="timeline">
+                        <div class="timeline-item" data-aos="fade-up" data-aos-delay="200">
+                            <div class="timeline-year">1727</div>
+                            <div class="timeline-content">
+                                <h3>Royal Beginnings</h3>
+                                <p>Founded in Johari Bazaar, serving the royal kitchens of Jaipur Maharajas</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item" data-aos="fade-up" data-aos-delay="400">
+                            <div class="timeline-year">1800s</div>
+                            <div class="timeline-content">
+                                <h3>Heritage Recipes</h3>
+                                <p>Perfected secret recipes passed down through generations of master chefs</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item" data-aos="fade-up" data-aos-delay="600">
+                            <div class="timeline-year">Modern Era</div>
+                            <div class="timeline-content">
+                                <h3>Global Recognition</h3>
+                                <p>Expanded into full-scale restaurant and heritage hotel while preserving traditions</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Signature Sweets Section -->
+    <section class="sweets" id="sweets">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title">Signature Royal Sweets</h2>
+                <p class="section-subtitle">Handcrafted with love, served with pride</p>
+            </div>
+
+            <div class="sweets-filters" data-aos="fade-up" data-aos-delay="200">
+                <button class="filter-btn active" data-filter="all">All Sweets</button>
+                <button class="filter-btn" data-filter="festive">Festive</button>
+                <button class="filter-btn" data-filter="traditional">Traditional</button>
+                <button class="filter-btn" data-filter="gift-boxes">Gift Boxes</button>
+                <button class="filter-btn" data-filter="seasonal">Seasonal</button>
+            </div>
+
+            <div class="sweets-grid">
+                <div class="sweet-card" data-category="traditional festive" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="sweet-image">
+                        <img src="https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=400&h=300&fit=crop" alt="Ghewar">
+                        <div class="sweet-overlay">
+                            <button class="quick-view">Quick View</button>
+                        </div>
+                    </div>
+                    <div class="sweet-content">
+                        <h3>Royal Ghewar</h3>
+                        <p>Traditional disc-shaped cake soaked in sugar syrup</p>
+                        <div class="sweet-price">₹350/kg</div>
+                        <button class="add-to-cart" data-item="ghewar" data-price="350">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="sweet-card" data-category="traditional" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="sweet-image">
+                        <img src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=400&h=300&fit=crop" alt="Gulab Jamun">
+                        <div class="sweet-overlay">
+                            <button class="quick-view">Quick View</button>
+                        </div>
+                    </div>
+                    <div class="sweet-content">
+                        <h3>Gulab Jamun</h3>
+                        <p>Soft milk dumplings in aromatic sugar syrup</p>
+                        <div class="sweet-price">₹40/piece</div>
+                        <button class="add-to-cart" data-item="gulab-jamun" data-price="40">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="sweet-card" data-category="traditional seasonal" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="sweet-image">
+                        <img src="https://images.unsplash.com/photo-1571197119297-fc8b05e2c5f4?w=400&h=300&fit=crop" alt="Rasgulla">
+                        <div class="sweet-overlay">
+                            <button class="quick-view">Quick View</button>
+                        </div>
+                    </div>
+                    <div class="sweet-content">
+                        <h3>Rasgulla</h3>
+                        <p>Spongy cottage cheese balls in light syrup</p>
+                        <div class="sweet-price">₹30/piece</div>
+                        <button class="add-to-cart" data-item="rasgulla" data-price="30">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="sweet-card" data-category="gift-boxes festive" data-aos="zoom-in" data-aos-delay="400">
+                    <div class="sweet-image">
+                        <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop" alt="Mixed Sweets Box">
+                        <div class="sweet-overlay">
+                            <button class="quick-view">Quick View</button>
+                        </div>
+                    </div>
+                    <div class="sweet-content">
+                        <h3>Royal Mixed Box</h3>
+                        <p>Assorted premium sweets in elegant packaging</p>
+                        <div class="sweet-price">₹1200/box</div>
+                        <button class="add-to-cart" data-item="mixed-box" data-price="1200">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="sweet-card" data-category="festive seasonal" data-aos="zoom-in" data-aos-delay="500">
+                    <div class="sweet-image">
+                        <img src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=400&h=300&fit=crop" alt="Kaju Katli">
+                        <div class="sweet-overlay">
+                            <button class="quick-view">Quick View</button>
+                        </div>
+                    </div>
+                    <div class="sweet-content">
+                        <h3>Kaju Katli</h3>
+                        <p>Premium cashew fudge with silver leaf</p>
+                        <div class="sweet-price">₹800/kg</div>
+                        <button class="add-to-cart" data-item="kaju-katli" data-price="800">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="sweet-card" data-category="traditional" data-aos="zoom-in" data-aos-delay="600">
+                    <div class="sweet-image">
+                        <img src="https://images.unsplash.com/photo-1571197119297-fc8b05e2c5f4?w=400&h=300&fit=crop" alt="Jalebi">
+                        <div class="sweet-overlay">
+                            <button class="quick-view">Quick View</button>
+                        </div>
+                    </div>
+                    <div class="sweet-content">
+                        <h3>Crispy Jalebi</h3>
+                        <p>Golden spirals of sweetness, served fresh</p>
+                        <div class="sweet-price">₹25/piece</div>
+                        <button class="add-to-cart" data-item="jalebi" data-price="25">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Thali & Restaurant Menu Section -->
+    <section class="thali" id="thali">
+        <div class="container">
+            <div class="thali-content">
+                <div class="thali-images" data-aos="fade-right">
+                    <div class="thali-slider">
+                        <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=600&h=400&fit=crop" alt="Rajasthani Thali" class="active">
+                        <img src="https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=600&h=400&fit=crop" alt="Dal Baati Churma">
+                        <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&h=400&fit=crop" alt="Kachori">
+                    </div>
+                    <div class="slider-controls">
+                        <button class="slider-btn active" data-slide="0"></button>
+                        <button class="slider-btn" data-slide="1"></button>
+                        <button class="slider-btn" data-slide="2"></button>
+                    </div>
+                </div>
+                <div class="thali-menu" data-aos="fade-left">
+                    <h2 class="section-title">Royal Rajasthani Thali</h2>
+                    <p class="thali-description">
+                        Experience the complete flavour journey of Rajasthan with our signature thali, 
+                        featuring traditional recipes passed down through generations.
+                    </p>
+
+                    <div class="menu-accordion">
+                        <div class="menu-item">
+                            <div class="menu-header">
+                                <h3>Royal Thali <span class="price">₹450</span></h3>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="menu-content">
+                                <p>Dal Baati Churma, Gatte ki Sabzi, Ker Sangri, Papad, Pickle, Buttermilk, Sweet</p>
+                            </div>
+                        </div>
+
+                        <div class="menu-item">
+                            <div class="menu-header">
+                                <h3>Maharaja Thali <span class="price">₹650</span></h3>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="menu-content">
+                                <p>All Royal Thali items plus Laal Maas, Safed Maas, Bajre ki Roti, Extra Sweets</p>
+                            </div>
+                        </div>
+
+                        <div class="menu-item">
+                            <div class="menu-header">
+                                <h3>Special Items <span class="price">A la Carte</span></h3>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="menu-content">
+                                <p>Pyaaz Kachori ₹25, Mirchi Bada ₹30, Lassi ₹45, Kulfi ₹60</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="thali-highlights">
+                        <div class="highlight">
+                            <i class="fas fa-leaf"></i>
+                            <span>100% Vegetarian</span>
+                        </div>
+                        <div class="highlight">
+                            <i class="fas fa-ban"></i>
+                            <span>No Onion/Garlic</span>
+                        </div>
+                        <div class="highlight">
+                            <i class="fas fa-award"></i>
+                            <span>Traditional Recipes</span>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-primary">
+                        <i class="fas fa-download"></i> Download Full Menu
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gifting Section -->
+    <section class="gifting" id="gifting">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title">Royal Gifting & Events</h2>
+                <p class="section-subtitle">Celebrate life's precious moments with royal elegance</p>
+            </div>
+
+            <div class="gifting-grid">
+                <div class="gift-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="gift-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <h3>Corporate Gifting</h3>
+                    <p>Premium sweet hampers for business relationships and corporate events</p>
+                    <ul>
+                        <li>Custom branding options</li>
+                        <li>Bulk order discounts</li>
+                        <li>Timely delivery</li>
+                    </ul>
+                    <button class="btn btn-outline">Enquire Now</button>
+                </div>
+
+                <div class="gift-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="gift-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>Wedding Hampers</h3>
+                    <p>Elegant wedding gift boxes that add sweetness to your special celebrations</p>
+                    <ul>
+                        <li>Customized packaging</li>
+                        <li>Traditional designs</li>
+                        <li>Multiple size options</li>
+                    </ul>
+                    <button class="btn btn-outline">View Packages</button>
+                </div>
+
+                <div class="gift-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="gift-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3>Festival Specials</h3>
+                    <p>Celebrate Diwali, Teej, Holi with our specially curated festival collections</p>
+                    <ul>
+                        <li>Seasonal varieties</li>
+                        <li>Gift wrapping included</li>
+                        <li>Home delivery available</li>
+                    </ul>
+                    <button class="btn btn-outline">Order Now</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hotel Section -->
+    <section class="hotel" id="hotel">
+        <div class="container">
+            <div class="hotel-content">
+                <div class="hotel-info" data-aos="fade-right">
+                    <h2 class="section-title">LMB Heritage Inn</h2>
+                    <p class="hotel-description">
+                        Experience royal hospitality in the heart of Jaipur. Our heritage hotel combines 
+                        traditional Rajasthani architecture with modern amenities.
+                    </p>
+
+                    <div class="hotel-features">
+                        <div class="feature">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <h4>Prime Location</h4>
+                                <p>Walking distance to City Palace, Hawa Mahal, and Johari Bazaar</p>
+                            </div>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-utensils"></i>
+                            <div>
+                                <h4>Complimentary Dining</h4>
+                                <p>Traditional vegetarian breakfast and dinner included</p>
+                            </div>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-wifi"></i>
+                            <div>
+                                <h4>Modern Amenities</h4>
+                                <p>Free WiFi, AC, room service, and 24/7 concierge</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="hotel-reviews">
+                        <h4>What Our Guests Say</h4>
+                        <div class="review">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p>"Authentic Rajasthani experience with exceptional hospitality"</p>
+                            <cite>- Priya Sharma, Mumbai</cite>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-primary">
+                        <i class="fas fa-calendar-check"></i> Book Your Stay
+                    </button>
+                </div>
+
+                <div class="hotel-gallery" data-aos="fade-left">
+                    <div class="gallery-main">
+                        <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=500&h=600&fit=crop" alt="Hotel Room">
+                    </div>
+                    <div class="gallery-thumbnails">
+                        <img src="https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=150&h=150&fit=crop" alt="Lobby">
+                        <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=150&h=150&fit=crop" alt="Restaurant">
+                        <img src="https://images.unsplash.com/photo-1571197119297-fc8b05e2c5f4?w=150&h=150&fit=crop" alt="Courtyard">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title">What Our Patrons Say</h2>
+                <p class="section-subtitle">Three centuries of satisfied customers</p>
+            </div>
+
+            <div class="testimonials-carousel" data-aos="fade-up" data-aos-delay="200">
+                <div class="testimonial active">
+                    <div class="testimonial-content">
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <h3>"A Taste of Royal Heritage"</h3>
+                        <p>Every bite at LMB takes you back to the royal kitchens of Jaipur. The ghewar is absolutely divine, and the thali is a complete cultural experience.</p>
+                        <div class="testimonial-author">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=60&h=60&fit=crop&crop=face" alt="Rajesh Kumar">
+                            <div>
+                                <cite>Rajesh Kumar</cite>
+                                <span>Food Blogger, Delhi</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <h3>"Perfect for Special Occasions"</h3>
+                        <p>Ordered their corporate gift boxes for Diwali, and our clients were absolutely delighted. The packaging was elegant and the sweets were fresh and delicious.</p>
+                        <div class="testimonial-author">
+                            <img src="https://images.unsplash.com/photo-1494790108755-2616b2d89b4e?w=60&h=60&fit=crop&crop=face" alt="Meera Agarwal">
+                            <div>
+                                <cite>Meera Agarwal</cite>
+                                <span>Business Owner, Jaipur</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <h3>"Authentic Rajasthani Experience"</h3>
+                        <p>Staying at LMB Heritage Inn was like living in a royal palace. The food, hospitality, and location made our Jaipur trip truly memorable.</p>
+                        <div class="testimonial-author">
+                            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=60&h=60&fit=crop&crop=face" alt="Arjun Malhotra">
+                            <div>
+                                <cite>Arjun Malhotra</cite>
+                                <span>Tourist, Bangalore</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="carousel-controls">
+                <button class="carousel-btn active" data-slide="0"></button>
+                <button class="carousel-btn" data-slide="1"></button>
+                <button class="carousel-btn" data-slide="2"></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="contact-content">
+                <div class="contact-info" data-aos="fade-right">
+                    <h2 class="section-title">Visit Our Heritage Store</h2>
+                    <p>Experience the royal flavours in person at our heritage location in Johari Bazaar</p>
+
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <h4>Address</h4>
+                                <p>Johari Bazaar, Near City Palace<br>Jaipur, Rajasthan 302002</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-clock"></i>
+                            <div>
+                                <h4>Opening Hours</h4>
+                                <p>Daily: 8:00 AM - 11:00 PM<br>Restaurant: 11:00 AM - 3:30 PM, 7:00 PM - 11:00 PM</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <h4>Contact</h4>
+                                <p>+91 141 256 5844<br>info@lmbjaipur.com</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form" data-aos="fade-left">
+                    <h3>Get In Touch</h3>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <select name="inquiry_type" required>
+                                <option value="">Select Inquiry Type</option>
+                                <option value="general">General Inquiry</option>
+                                <option value="hotel">Hotel Booking</option>
+                                <option value="bulk">Bulk Order</option>
+                                <option value="event">Event Catering</option>
+                            </select>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <input type="text" name="name" placeholder="Your Name" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" name="email" placeholder="Your Email" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" name="phone" placeholder="Your Phone Number" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-paper-plane"></i> Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="map-container" data-aos="fade-up" data-aos-delay="300">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3557.665!2d75.8246!3d26.9258!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396db1c5d1c5d1c5%3A0x1c5d1c5d1c5d1c5d!2sJohari%20Bazaar%2C%20Jaipur!5e0!3m2!1sen!2sin!4v1234567890"
+                    frameborder="0" 
+                    allowfullscreen="" 
+                    aria-hidden="false" 
+                    tabindex="0">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <img src="https://via.placeholder.com/80x60/C9A35C/FFFFFF?text=LMB" alt="LMB Logo">
+                        <h3>LMB Jaipur</h3>
+                    </div>
+                    <p>Serving royal flavours since 1727. Experience the heritage of Jaipur through our authentic sweets and traditional hospitality.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#legacy">Our Legacy</a></li>
+                        <li><a href="#sweets">Sweets</a></li>
+                        <li><a href="#thali">Thali & Menu</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#gifting">Corporate Gifting</a></li>
+                        <li><a href="#hotel">Hotel Booking</a></li>
+                        <li><a href="#contact">Event Catering</a></li>
+                        <li><a href="#contact">Bulk Orders</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <div class="footer-contact">
+                        <p><i class="fas fa-map-marker-alt"></i> Johari Bazaar, Jaipur</p>
+                        <p><i class="fas fa-phone"></i> +91 141 256 5844</p>
+                        <p><i class="fas fa-envelope"></i> info@lmbjaipur.com</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 LMB Jaipur. All rights reserved. | Privacy Policy | Terms of Service</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Chat Button -->
+    <div class="whatsapp-chat">
+        <a href="https://wa.me/919141256584" target="_blank" aria-label="Chat on WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+    </div>
+
+    <!-- Shopping Cart Sidebar -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3>Your Order</h3>
+            <button class="cart-close" id="cartClose">&times;</button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <p class="empty-cart">Your cart is empty</p>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <strong>Total: ₹<span id="cartTotal">0</span></strong>
+            </div>
+            <button class="btn btn-primary cart-checkout">
+                <i class="fas fa-shopping-bag"></i> Proceed to Checkout
+            </button>
+        </div>
+    </div>
+
+    <!-- Cart Overlay -->
+    <div class="cart-overlay" id="cartOverlay"></div>
+
+    <!-- AOS Animation Library -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <script src="script.js"></script>
+</body>
+</html>
