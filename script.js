@@ -20,28 +20,210 @@ const contactForm = document.getElementById('contactForm');
 
 // ===== INITIALIZATION =====
 document.addEventListener('DOMContentLoaded', function() {
-    initAOS();
-    initNavigation();
-    initCart();
-    initTestimonials();
-    initThaliSlider();
-    initMenuAccordion();
-    initSweetFilters();
-    initContactForm();
-    initScrollEffects();
-    updateCartDisplay();
+    // Initialize AOS animation library
+    AOS.init({
+        duration: 800,
+        easing: 'ease-in-out',
+        once: true
+    });
+    
+    // Add royal dividers between sections
+    addRoyalDividers();
+    
+    initEventListeners();
 });
 
-// ===== AOS ANIMATION INITIALIZATION =====
-function initAOS() {
-    if (typeof AOS !== 'undefined') {
-        AOS.init({
-            duration: 800,
-            easing: 'ease-out',
-            once: true,
-            offset: 100
+// Function to initialize all event listeners
+function initEventListeners() {
+    // Navigation scroll effect
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    });
+
+    // Mobile navigation toggle
+    if (navToggle) {
+        navToggle.addEventListener('click', function() {
+            navMenu.classList.toggle('active');
+            this.classList.toggle('active');
         });
     }
+
+    // Close mobile menu when a nav link is clicked
+    const navLinks = document.querySelectorAll('.nav-link');
+    navLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            navMenu.classList.remove('active');
+            if (navToggle) navToggle.classList.remove('active');
+        });
+    });
+
+    // Menu accordion functionality
+    const menuItems = document.querySelectorAll('.menu-item');
+    menuItems.forEach(item => {
+        const header = item.querySelector('.menu-header');
+        if (header) {
+            header.addEventListener('click', function() {
+                item.classList.toggle('active');
+            });
+        }
+    });
+
+    // Sweets filter functionality
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const sweetCards = document.querySelectorAll('.sweet-card');
+
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            // Remove active class from all buttons
+            filterBtns.forEach(btn => btn.classList.remove('active'));
+            // Add active class to clicked button
+            this.classList.add('active');
+            
+            const filter = this.getAttribute('data-filter');
+            
+            sweetCards.forEach(card => {
+                if (filter === 'all') {
+                    card.style.display = 'block';
+                } else {
+                    const categories = card.getAttribute('data-category').split(' ');
+                    if (categories.includes(filter)) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                }
+            });
+        });
+    });
+
+    // Thali slider functionality
+    const sliderBtns = document.querySelectorAll('.slider-btn');
+    const sliderImages = document.querySelectorAll('.thali-slider img');
+
+    sliderBtns.forEach((btn, index) => {
+        btn.addEventListener('click', function() {
+            // Remove active class from all buttons and images
+            sliderBtns.forEach(btn => btn.classList.remove('active'));
+            sliderImages.forEach(img => img.classList.remove('active'));
+            
+            // Add active class to clicked button and corresponding image
+            this.classList.add('active');
+            sliderImages[index].classList.add('active');
+        });
+    });
+
+    // Testimonial carousel functionality
+    const carouselBtns = document.querySelectorAll('.carousel-btn');
+    const testimonials = document.querySelectorAll('.testimonial');
+
+    carouselBtns.forEach((btn, index) => {
+        btn.addEventListener('click', function() {
+            // Remove active class from all buttons and testimonials
+            carouselBtns.forEach(btn => btn.classList.remove('active'));
+            testimonials.forEach(testimonial => testimonial.classList.remove('active'));
+            
+            // Add active class to clicked button and corresponding testimonial
+            this.classList.add('active');
+            testimonials[index].classList.add('active');
+        });
+    });
+
+    // Hotel gallery functionality
+    const galleryThumbnails = document.querySelectorAll('.gallery-thumbnails img');
+    const galleryMain = document.querySelector('.gallery-main img');
+
+    if (galleryMain && galleryThumbnails.length > 0) {
+        galleryThumbnails.forEach(thumbnail => {
+            thumbnail.addEventListener('click', function() {
+                galleryMain.src = this.src.replace('w=150&h=150', 'w=500&h=600');
+            });
+        });
+    }
+
+    // Shopping cart functionality
+    if (cartBtn && cartSidebar && cartClose && cartOverlay) {
+        cartBtn.addEventListener('click', function() {
+            cartSidebar.classList.add('active');
+            cartOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+
+        cartClose.addEventListener('click', function() {
+            cartSidebar.classList.remove('active');
+            cartOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+
+        cartOverlay.addEventListener('click', function() {
+            cartSidebar.classList.remove('active');
+            cartOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+    }
+
+    // Add to cart functionality
+    const addToCartBtns = document.querySelectorAll('.add-to-cart');
+    
+    addToCartBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            const item = this.getAttribute('data-item');
+            const price = parseFloat(this.getAttribute('data-price'));
+            const name = this.parentElement.querySelector('h3').textContent;
+            
+            // Check if item is already in cart
+            const existingItem = cart.find(cartItem => cartItem.item === item);
+            
+            if (existingItem) {
+                existingItem.quantity++;
+            } else {
+                cart.push({
+                    item: item,
+                    name: name,
+                    price: price,
+                    quantity: 1
+                });
+            }
+            
+            updateCart();
+            
+            // Show a brief animation or feedback
+            this.innerHTML = '✓ Added';
+            setTimeout(() => {
+                this.innerHTML = 'Add to Cart';
+            }, 1500);
+        });
+    });
+
+    // Contact form functionality
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            // In a real app, you'd send form data to server here
+            alert('Thank you for your message! We will get back to you soon.');
+            this.reset();
+        });
+    }
+}
+
+// ===== ROYAL DIVIDERS =====
+function addRoyalDividers() {
+    const sections = document.querySelectorAll('section');
+    
+    sections.forEach((section, index) => {
+        if (index > 0) { // Skip the first section (hero)
+            const prevSection = sections[index - 1];
+            const divider = document.createElement('div');
+            divider.className = 'royal-divider';
+            divider.innerHTML = '<span class="emblem">✦</span>';
+            
+            // Insert divider before current section
+            section.parentNode.insertBefore(divider, section);
+        }
+    });
 }
 
 // ===== NAVIGATION FUNCTIONALITY =====
@@ -115,6 +297,17 @@ function scrollToSection(sectionId) {
         });
     }
 }
+
+// Smooth scrolling for navigation links
+window.scrollToSection = function(sectionId) {
+    const section = document.getElementById(sectionId);
+    if (section) {
+        window.scrollTo({
+            top: section.offsetTop - 80, // 80px offset for navbar
+            behavior: 'smooth'
+        });
+    }
+};
 
 // ===== SCROLL EFFECTS =====
 function initScrollEffects() {
@@ -225,39 +418,57 @@ function updateCartQuantity(itemName, change) {
     }
 }
 
-function updateCartDisplay() {
-    if (!cartItems || !cartTotal || !cartCount) return;
-
-    // Update cart count
-    const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-    cartCount.textContent = totalItems;
-    cartCount.style.display = totalItems > 0 ? 'block' : 'none';
-
-    // Update cart items
-    if (cart.length === 0) {
-        cartItems.innerHTML = '<p class="empty-cart">Your cart is empty</p>';
-        cartTotal.textContent = '0';
-        return;
+// Function to update cart UI
+function updateCart() {
+    if (cartItems && cartTotal && cartCount) {
+        // Clear cart items
+        cartItems.innerHTML = '';
+        
+        if (cart.length === 0) {
+            cartItems.innerHTML = '<p class="empty-cart">Your cart is empty</p>';
+            cartTotal.textContent = '0';
+            cartCount.textContent = '0';
+            return;
+        }
+        
+        // Calculate total
+        let total = 0;
+        let count = 0;
+        
+        // Add each item to cart
+        cart.forEach(item => {
+            const itemTotal = item.price * item.quantity;
+            total += itemTotal;
+            count += item.quantity;
+            
+            const cartItem = document.createElement('div');
+            cartItem.classList.add('cart-item');
+            cartItem.innerHTML = `
+                <div class="cart-item-info">
+                    <h4>${item.name}</h4>
+                    <div class="cart-item-price">₹${item.price} × ${item.quantity}</div>
+                </div>
+                <div class="cart-item-total">₹${itemTotal}</div>
+                <button class="cart-item-remove" data-item="${item.item}">×</button>
+            `;
+            
+            cartItems.appendChild(cartItem);
+        });
+        
+        // Update total and count
+        cartTotal.textContent = total;
+        cartCount.textContent = count;
+        
+        // Add event listeners to remove buttons
+        const removeButtons = document.querySelectorAll('.cart-item-remove');
+        removeButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const itemToRemove = this.getAttribute('data-item');
+                cart = cart.filter(item => item.item !== itemToRemove);
+                updateCart();
+            });
+        });
     }
-
-    cartItems.innerHTML = cart.map(item => `
-        <div class="cart-item">
-            <div class="cart-item-info">
-                <h4>${formatItemName(item.name)}</h4>
-                <p>₹${item.price} × ${item.quantity}</p>
-            </div>
-            <div class="cart-item-controls">
-                <button class="quantity-btn" onclick="updateCartQuantity('${item.name}', -1)">-</button>
-                <span>${item.quantity}</span>
-                <button class="quantity-btn" onclick="updateCartQuantity('${item.name}', 1)">+</button>
-                <button class="quantity-btn" onclick="removeFromCart('${item.name}')" style="margin-left: 10px; background: #ff4444; color: white;">×</button>
-            </div>
-        </div>
-    `).join('');
-
-    // Update total
-    const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-    cartTotal.textContent = total;
 }
 
 function formatItemName(name) {
@@ -828,17 +1039,22 @@ document.addEventListener('keydown', function(e) {
     }
 });
 
-// ===== SERVICE WORKER REGISTRATION =====
-if ('serviceWorker' in navigator) {
-    window.addEventListener('load', function() {
-        navigator.serviceWorker.register('/sw.js')
-            .then(function(registration) {
-                console.log('ServiceWorker registration successful');
-            })
-            .catch(function(err) {
-                console.log('ServiceWorker registration failed');
-            });
-    });
+// ===== SERVICE WORKER =====
+// Only register service worker in production
+if (window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function() {
+            navigator.serviceWorker.register('/service-worker.js')
+                .then(function(registration) {
+                    console.log('ServiceWorker registration successful with scope: ', registration.scope);
+                })
+                .catch(function(error) {
+                    console.log('ServiceWorker registration failed: ', error);
+                });
+        });
+    }
+} else {
+    console.log('Service worker not registered in development environment');
 }
 
 // ===== ANALYTICS TRACKING =====
@@ -892,11 +1108,13 @@ window.addEventListener('error', function(e) {
 
 // ===== CONSOLE WELCOME MESSAGE =====
 console.log(`
-🍭 Welcome to LMB Jaipur - Royal Heritage Since 1727 🍭
-========================================================
+%c🍭 Welcome to LMB Jaipur - Royal Heritage Since 1727 🍭
+%c========================================================
 Serving authentic Rajasthani flavours with modern digital experience.
 Website developed with ❤️ for the royal food lovers.
-`);
+`, 
+'color: #C9A35C; font-size: 16px; font-weight: bold;', 
+'color: #800000; font-size: 12px;');
 
 // ===== EXPORT FUNCTIONS FOR TESTING =====
 if (typeof module !== 'undefined' && module.exports) {
