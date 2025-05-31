@@ -20,6 +20,9 @@ const contactForm = document.getElementById('contactForm');
 
 // ===== INITIALIZATION =====
 document.addEventListener('DOMContentLoaded', function() {
+    // Initialize loading animation
+    initLuxuryLoader();
+    
     // Initialize AOS animation library
     AOS.init({
         duration: 800,
@@ -31,6 +34,9 @@ document.addEventListener('DOMContentLoaded', function() {
     addRoyalDividers();
     
     initEventListeners();
+    
+    // Initialize hero parallax effect
+    initHeroParallax();
 });
 
 // Function to initialize all event listeners
@@ -953,6 +959,116 @@ function optimizeImages() {
     });
 }
 
+// ===== LUXURY LOADER ANIMATION =====
+function initLuxuryLoader() {
+    const luxuryLoader = document.getElementById('luxuryLoader');
+    
+    if (!luxuryLoader) return;
+    
+    // Force scrollbar to show during loading to prevent layout shift
+    document.body.style.overflow = 'hidden';
+      // Add content loaded listener
+    window.addEventListener('load', function() {
+        setTimeout(() => {
+            // Start fadeout animation
+            luxuryLoader.classList.add('fade-out');
+            
+            // Enable scrolling after animation
+            setTimeout(() => {
+                document.body.style.overflow = '';
+                
+                // Trigger zoom effect on hero image
+                const heroImage = document.getElementById('heroImage');
+                if (heroImage) {
+                    heroImage.classList.add('zoom-effect');
+                }
+                
+                // Ensure hero content is visible with proper background
+                const heroContent = document.querySelector('.hero-content');
+                if (heroContent) {
+                    heroContent.style.opacity = '1';
+                }
+                
+                // Refresh AOS
+                if (typeof AOS !== 'undefined') {
+                    AOS.refresh();
+                }
+            }, 800);
+        }, 1500);
+    });
+}
+
+// ===== HERO PARALLAX EFFECT =====
+function initHeroParallax() {
+    const heroSection = document.querySelector('.hero');
+    const heroImage = document.getElementById('heroImage');
+    
+    if (!heroSection || !heroImage) return;
+    
+    // Add ornament animation
+    const ornaments = document.querySelectorAll('.ornament');
+    ornaments.forEach(ornament => {
+        const speed = 0.03 + Math.random() * 0.02;
+        const direction = Math.random() > 0.5 ? 1 : -1;
+        
+        setInterval(() => {
+            ornament.style.transform = `rotate(${direction * performance.now() * speed % 360}deg)`;
+        }, 100);
+    });
+      // Parallax scroll effect
+    window.addEventListener('scroll', function() {
+        if (!isInViewport(heroSection)) return;
+        
+        const scrollPosition = window.scrollY;
+        if (scrollPosition <= heroSection.offsetHeight) {
+            const parallaxOffset = scrollPosition * 0.4;
+            heroImage.style.transform = `scale(1.15) translateY(${parallaxOffset}px)`;
+            
+            // Add subtle opacity effect to overlay
+            const heroOverlay = document.querySelector('.hero-overlay');
+            if (heroOverlay) {
+                const baseOpacity = 0.85; // Increased base opacity for better text visibility
+                const scrollOpacity = scrollPosition / heroSection.offsetHeight * 0.15;
+                heroOverlay.style.backgroundColor = `rgba(80, 0, 0, ${baseOpacity + scrollOpacity})`;
+            }
+            
+            // Adjust hero content background opacity for better visibility while scrolling
+            const heroContent = document.querySelector('.hero-content');
+            if (heroContent) {
+                const baseContentOpacity = 0.4; // Base background opacity
+                const scrollContentOpacity = scrollPosition / heroSection.offsetHeight * 0.2;
+                heroContent.style.backgroundColor = `rgba(0, 0, 0, ${baseContentOpacity + scrollContentOpacity})`;
+            }
+        }
+    });
+    
+    // Mouse move effect for added depth
+    heroSection.addEventListener('mousemove', function(e) {
+        if (window.innerWidth <= 768) return; // Disable on mobile
+        
+        const xPos = (e.clientX / window.innerWidth - 0.5) * 20;
+        const yPos = (e.clientY / window.innerHeight - 0.5) * 20;
+        
+        heroImage.style.transform = `scale(1.15) translate(${-xPos}px, ${-yPos}px)`;
+        
+        // Move ornaments in opposite direction for depth effect
+        ornaments.forEach((ornament, index) => {
+            const factor = 0.5 + (index * 0.1);
+            ornament.style.transform = `translate(${xPos * factor}px, ${yPos * factor}px) rotate(${ornament.style.transform ? ornament.style.transform.split('rotate(')[1] : '0deg'})`;
+        });
+    });
+    
+    // Reset transform on mouse leave
+    heroSection.addEventListener('mouseleave', function() {
+        heroImage.style.transform = 'scale(1.15)';
+        
+        // Reset ornament positions
+        ornaments.forEach(ornament => {
+            ornament.style.transform = `rotate(${ornament.style.transform ? ornament.style.transform.split('rotate(')[1] : '0deg'})`;
+        });
+    });
+}
+
 // ===== UTILITY FUNCTIONS =====
 
 // Debounce function for performance optimization
@@ -981,10 +1097,8 @@ function formatCurrency(amount) {
 function isInViewport(element) {
     const rect = element.getBoundingClientRect();
     return (
-        rect.top >= 0 &&
-        rect.left >= 0 &&
-        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+        rect.bottom >= 0 &&
+        rect.top <= (window.innerHeight || document.documentElement.clientHeight)
     );
 }
 

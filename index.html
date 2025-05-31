@@ -18,6 +18,23 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Luxury Loader -->
+    <div class="luxury-loader" id="luxuryLoader">
+        <div class="loader-content">
+            <div class="loader-emblem">
+                <img src="https://via.placeholder.com/120x100/C9A35C/FFFFFF?text=LMB" alt="LMB Jaipur">
+                <div class="loader-crown"></div>
+            </div>
+            <div class="loader-animation">
+                <span></span><span></span><span></span><span></span>
+            </div>
+            <div class="loader-text">
+                <h2>Royal Heritage Since 1727</h2>
+                <p>Crafting exquisite flavors of Rajasthan</p>
+            </div>
+        </div>
+    </div>
+    
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
         <div class="nav-container">
@@ -42,20 +59,29 @@
                     <span></span>
                 </button>            </div>
         </div>
-    </nav>
-
-    <!-- Hero Section -->
+    </nav>    <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="hero-background">
-            <div class="hero-overlay"></div>
-            <img src="https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=1920&h=1080&fit=crop" alt="LMB Heritage" class="hero-image">
+            <div class="hero-parallax-container">
+                <div class="hero-overlay"></div>
+                <img src="https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=1920&h=1080&fit=crop" alt="LMB Heritage" class="hero-image" id="heroImage">
+            </div>
+            <div class="hero-ornaments">
+                <div class="ornament top-left"></div>
+                <div class="ornament top-right"></div>
+                <div class="ornament bottom-left"></div>
+                <div class="ornament bottom-right"></div>
+            </div>
         </div>
+        
         <div class="hero-content">
+            
             <h1 class="hero-title" data-aos="fade-up" data-aos-delay="300">
-                Experience Royal Flavours Since 1727
+                <span class="title-accent">Royal</span> Flavours of Rajasthan
             </h1>
+            <div class="title-separator" data-aos="fade-up" data-aos-delay="400"></div>
             <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="500">
-                The heritage of Jaipur served on a plate
+                Experience the heritage of Jaipur served on a golden plate
             </p>
             <div class="hero-buttons" data-aos="fade-up" data-aos-delay="700">
                 <button class="btn btn-primary" onclick="scrollToSection('sweets')">
@@ -66,6 +92,7 @@
                 </button>
             </div>
         </div>
+        
         <div class="scroll-indicator" data-aos="fade-in" data-aos-delay="1000">
             <i class="fas fa-chevron-down"></i>
         </div>
